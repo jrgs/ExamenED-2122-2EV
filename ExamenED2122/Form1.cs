@@ -11,7 +11,7 @@ namespace ExamenED2122
 {
     public partial class Form1 : Form
     {
-        double cantidadTotal;
+        double cantidadTotalAMG2122;
         public Form1()
         {
             InitializeComponent();
@@ -19,20 +19,35 @@ namespace ExamenED2122
 
         private void btCalcular_Click(object sender, EventArgs e)
         {
-            double importe = Convert.ToDouble(txtImporte.Text);
-            double IVA = 0.21;
-            if (rbReducido.Checked == true)  // IVA reducido, 10%
-                IVA = 0.1;
-            if (rbSuper.Checked == true)  // IVA super reducido, 4%
-                IVA = 0.4;
-            importe = importe * IVA; // Calculamos el importe con IVA
-            cantidadTotal = importe; // Se lo añadimos a la cantidad total
-            txtResultado.Text = Convert.ToString(importe);
+            double importeAMG2122 = Convert.ToDouble(txtImporte.Text);
+           
+            // Declaro variables
+            double IVAAMG2122=0;
+            double totalIVAAMG2122;
+
+            if (rbNormal.Checked == true)
+                IVAAMG2122 = 0.21;
+
+            // IVA reducido, 10%
+            if (rbReducido.Checked == true)  
+                IVAAMG2122 = 0.1;
+
+            // IVA super reducido, 4%
+            if (rbSuper.Checked == true)  
+                IVAAMG2122 = 0.4;
+
+            // Calculamos el importe con IVA
+            totalIVAAMG2122 = importeAMG2122 * IVAAMG2122;
+            // Añado esta linea con el fin de separar el IVA y sumarlo al importe total
+            importeAMG2122 = importeAMG2122 + totalIVAAMG2122;
+            // Se lo añadimos a la cantidad total
+            cantidadTotalAMG2122 = importeAMG2122 ; 
+            txtResultado.Text = Convert.ToString(importeAMG2122);
         }
 
         private void btTotal_Click(object sender, EventArgs e)
         {
-            txtResultado.Text = Convert.ToString(cantidadTotal);
+            txtResultado.Text = Convert.ToString(cantidadTotalAMG2122);
         }
     }
 }
