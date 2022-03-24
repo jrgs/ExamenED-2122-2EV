@@ -19,15 +19,15 @@ namespace ExamenED2122
 
         private void btCalcular_Click(object sender, EventArgs e)
         {
-            double importe = Convert.ToDouble(txtImporte.Text);
-            double IVA = 0.21;
+            double importe_APC = Convert.ToDouble(txtImporte.Text);
+            double IVA_APC = 0.21;
             if (rbReducido.Checked == true)  // IVA reducido, 10%
-                IVA = 0.1;
+                IVA_APC = 0.1;
             if (rbSuper.Checked == true)  // IVA super reducido, 4%
-                IVA = 0.4;
-            importe = importe * IVA; // Calculamos el importe con IVA
-            cantidadTotal = importe; // Se lo añadimos a la cantidad total
-            txtResultado.Text = Convert.ToString(importe);
+                IVA_APC = 0.04;
+            importe_APC = importe_APC + importe_APC * IVA_APC; // Calculamos el importe con IVA
+            cantidadTotal = cantidadTotal + importe_APC; // Se lo añadimos a la cantidad total
+            txtResultado.Text = Convert.ToString(importe_APC);
         }
 
         private void btTotal_Click(object sender, EventArgs e)
