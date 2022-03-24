@@ -11,7 +11,7 @@ namespace ExamenED2122
 {
     public partial class Form1 : Form
     {
-        double cantidadTotal;
+        double YAGcantidadTotal;
         public Form1()
         {
             InitializeComponent();
@@ -19,20 +19,22 @@ namespace ExamenED2122
 
         private void btCalcular_Click(object sender, EventArgs e)
         {
-            double importe = Convert.ToDouble(txtImporte.Text);
-            double IVA = 0.21;
+            double YAGimporte = Convert.ToDouble(txtImporte.Text);
+            double YAGIVA = 0.21;
             if (rbReducido.Checked == true)  // IVA reducido, 10%
-                IVA = 0.1;
+                YAGIVA = 0.1 ;
             if (rbSuper.Checked == true)  // IVA super reducido, 4%
-                IVA = 0.4;
-            importe = importe * IVA; // Calculamos el importe con IVA
-            cantidadTotal = importe; // Se lo añadimos a la cantidad total
-            txtResultado.Text = Convert.ToString(importe);
+                YAGIVA = 0.4 ;
+            // si 5 * 0.21 = 1.05 + 5
+            // 3 * 0.10  = 0.3
+            YAGimporte = (YAGimporte * YAGIVA) + YAGimporte; // Calculamos el importe con IVA
+            YAGcantidadTotal = YAGimporte; // Se lo añadimos a la cantidad total12.0
+            txtResultado.Text = Convert.ToString(YAGimporte);
         }
 
         private void btTotal_Click(object sender, EventArgs e)
         {
-            txtResultado.Text = Convert.ToString(cantidadTotal);
+            txtResultado.Text = Convert.ToString(YAGcantidadTotal);
         }
     }
 }
