@@ -11,7 +11,7 @@ namespace ExamenED2122
 {
     public partial class Form1 : Form
     {
-        double cantidadTotal;
+        double cantidadTotalJBG1DAW2022;
         public Form1()
         {
             InitializeComponent();
@@ -19,20 +19,29 @@ namespace ExamenED2122
 
         private void btCalcular_Click(object sender, EventArgs e)
         {
-            double importe = Convert.ToDouble(txtImporte.Text);
-            double IVA = 0.21;
+            double importeJBG1DAW2022 = Convert.ToDouble(txtImporte.Text);
+
+            double IVAJBG1DAW2022 = 0.21;
+            
             if (rbReducido.Checked == true)  // IVA reducido, 10%
-                IVA = 0.1;
+            
+                IVAJBG1DAW2022 = 0.1;
+            
             if (rbSuper.Checked == true)  // IVA super reducido, 4%
-                IVA = 0.4;
-            importe = importe * IVA; // Calculamos el importe con IVA
-            cantidadTotal = importe; // Se lo añadimos a la cantidad total
-            txtResultado.Text = Convert.ToString(importe);
+            
+                IVAJBG1DAW2022 = 0.04;
+            
+            importeJBG1DAW2022 = importeJBG1DAW2022  +  importeJBG1DAW2022 * IVAJBG1DAW2022; // Calculamos el importe con IVA
+            
+            cantidadTotalJBG1DAW2022 = cantidadTotalJBG1DAW2022 + importeJBG1DAW2022; // Se lo añadimos a la cantidad total
+            
+            txtResultado.Text = Convert.ToString(importeJBG1DAW2022);
         }
 
         private void btTotal_Click(object sender, EventArgs e)
         {
-            txtResultado.Text = Convert.ToString(cantidadTotal);
+
+            txtResultado.Text = Convert.ToString(cantidadTotalJBG1DAW2022);
         }
     }
 }
