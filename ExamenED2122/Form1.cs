@@ -11,7 +11,7 @@ namespace ExamenED2122
 {
     public partial class Form1 : Form
     {
-        double cantidadTotal;
+        double cantidadtotalAIGC2122;
         public Form1()
         {
             InitializeComponent();
@@ -19,20 +19,30 @@ namespace ExamenED2122
 
         private void btCalcular_Click(object sender, EventArgs e)
         {
-            double importe = Convert.ToDouble(txtImporte.Text);
-            double IVA = 0.21;
+            double importeAIGC2122 = Double.Parse(txtImporte.Text);
+            double ivaAIGC2122 = 0.21;
+            double ivaAIGC2122redu = 0.1;
+            double ivaAIGC2122super = 0.4;
             if (rbReducido.Checked == true)  // IVA reducido, 10%
-                IVA = 0.1;
+                ivaAIGC2122redu = 0.1;
             if (rbSuper.Checked == true)  // IVA super reducido, 4%
-                IVA = 0.4;
-            importe = importe * IVA; // Calculamos el importe con IVA
-            cantidadTotal = importe; // Se lo añadimos a la cantidad total
-            txtResultado.Text = Convert.ToString(importe);
+                ivaAIGC2122super = 0.4;
+            importeAIGC2122 = importeAIGC2122 * ivaAIGC2122 / 100; // Calculamos el importe con IVA
+            importeAIGC2122 = importeAIGC2122 * ivaAIGC2122 / 100;
+            importeAIGC2122 = importeAIGC2122 * ivaAIGC2122redu / 100; // Calculamos el importe con IVA
+            importeAIGC2122 = importeAIGC2122 * ivaAIGC2122super / 100;
+            cantidadtotalAIGC2122 = importeAIGC2122; // Se lo añadimos a la cantidad total
+            txtResultado.Text = Convert.ToString(importeAIGC2122);
         }
 
         private void btTotal_Click(object sender, EventArgs e)
         {
-            txtResultado.Text = Convert.ToString(cantidadTotal);
+            txtResultado.Text = Convert.ToString(cantidadtotalAIGC2122);
         }
-    }
+
+        private void txtImporte_TextChanged(object sender, EventArgs e)
+            {
+
+            }
+        }
 }
